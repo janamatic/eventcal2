@@ -13,6 +13,9 @@ acts_as_gmappable
 
 
 
-
+def gmaps4rails_infowindow
+  # add here whatever html content you desire, it will be displayed when users clicks on the marker
+  "<h4>#{self.title}</h4><br/>#{self.address1}<br/>#{self.city},#{self.state},#{self.zip}<br/>#{self.description}"
+end
 
 end
