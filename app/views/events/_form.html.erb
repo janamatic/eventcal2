@@ -1,3 +1,11 @@
+ <script>
+$(function() {
+$( "#event_event_date" ).datepicker({ dateFormat: 'yy-mm-dd', showOn: "button",
+buttonImage: "/calendar.gif",
+buttonImageOnly: true });
+});
+</script>
+
 <%= form_for @event, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
     <%= f.label :title, :class => 'control-label' %>
@@ -5,12 +13,30 @@
       <%= f.text_field :title, :class => 'text_field' %>
     </div>
   </div>
+ <div class="control-group">
+     <label class="control-label">Event Date</label>
+    <div class="controls">
+      
+      <input class="text_field" id="event_event_date" name="event[event_date]" readonly="true" size="30" type="text" />
+    </div>
+  </div>
+
+
+
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :description, :class => 'text_area' %>
     </div>
   </div>
+
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :class => 'text_area' %>
+    </div>
+  </div>
+
   <div class="control-group">
     <%= f.label :address1, :class => 'control-label' %>
     <div class="controls">

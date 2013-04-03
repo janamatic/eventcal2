@@ -2,7 +2,7 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
-
+Event date: <%=@event.event_date.try(:month)%>/<%=@event.event_date.try(:day)%>/<%=@event.event_date.try(:year)%>
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
   <dd><%= @event.title %></dd>

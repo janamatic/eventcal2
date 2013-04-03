@@ -2,8 +2,24 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = []
+    @all_events= Event.all
+    if params[:day] and params[:year] and params[:month] 
 
+    for e in @all_events do
+        if e.event_date.try(:day).try(:to_s)==params[:day] and e.event_date.try(:month).try(:to_s)==params[:month] and e.event_date.try(:year).try(:to_s)==params[:year] 
+          @events << e
+        end
+    end
+   else  
+
+  @events=Event.all
+
+  end
+
+
+
+  @date = params[:date] ? Date.parse(params[:date]) : Date.today
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }

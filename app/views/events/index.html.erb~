@@ -1,3 +1,10 @@
+  <%= calendar do |date| %>
+    <%= link_to date.day, :month=>date.month, :day=>date.day, :year=>date.year %>
+  <% end %>
+
+
+
+
 <%- model_class = Event -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>

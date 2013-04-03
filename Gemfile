@@ -8,6 +8,7 @@ gem 'rails', '3.2.12'
 gem 'sqlite3'
 gem 'gmaps4rails'
 gem 'mysql2', '~> 0.3.7' 
+gem 'paperclip'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -28,7 +29,7 @@ gem "twitter-bootstrap-rails"
 end
 
 gem 'jquery-rails'
-
+gem 'jquery-ui-rails'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
