@@ -1,4 +1,9 @@
-  <%= calendar do |date| %>
+  <h8>
+    <%= link_to "<", date: @date.prev_month %>
+    <%= @date.strftime("%B %Y") %>
+    <%= link_to ">", date: @date.next_month %>
+  </h8>
+  <%= calendar @date do |date| %>
     <%= link_to date.day, :month=>date.month, :day=>date.day, :year=>date.year %>
   <% end %>
 
