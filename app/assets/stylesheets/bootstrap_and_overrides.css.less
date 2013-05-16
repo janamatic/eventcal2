@@ -1,17 +1,27 @@
 @import "twitter/bootstrap/bootstrap";
 @import "twitter/bootstrap/responsive";
 
-@media (min-width: 979px) {
+@media (min-width: 1000px) {
     body {
         padding-top: 60px;
+        min-width: 1000px;
     }
 }
+#tag_cloud {
+  width: 50px;
+  line-height: 1.6em;
+  .s { font-size: 0.8em; }
+  .m { font-size: 1.2em; }
+  .l { font-size: 1.8em; }
+}
+
 
 .dl-horizontal > dd:after {
   display: table;
   content: "";
   clear: both;
 }
+
 // Set the correct sprite paths
 @iconSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings.png");
 @iconWhiteSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings-white.png");

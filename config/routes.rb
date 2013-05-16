@@ -2,6 +2,10 @@ Eventcalendar::Application.routes.draw do
   resources :events
 
 
+get 'tags/:tag', to: 'events#index', as: :tag
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

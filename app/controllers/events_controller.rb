@@ -2,8 +2,39 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
+
+
+
     @events = []
     @all_events= Event.all
+
+
+  if params[:tag]
+
+    @all_tag_events = Event.tagged_with(params[:tag])
+
+    if params[:day] and params[:year] and params[:month] 
+
+    for e in @all_tag_events do
+        if e.event_date.try(:day).try(:to_s)==params[:day] and e.event_date.try(:month).try(:to_s)==params[:month] and e.event_date.try(:year).try(:to_s)==params[:year] 
+          @events << e
+        end
+    end
+   else  
+
+    @events = Event.tagged_with(params[:tag])
+
+end
+
+
+
+
+  else
+
+
+
+
+
     if params[:day] and params[:year] and params[:month] 
 
     for e in @all_events do
@@ -13,11 +44,15 @@ class EventsController < ApplicationController
     end
    else  
 
-  @events=Event.all
+    @events = Event.all
+
+end
 
   end
 
+    @json = @events.to_gmaps4rails
 
+   
 
   @date = params[:date] ? Date.parse(params[:date]) : Date.today
     respond_to do |format|

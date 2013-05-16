@@ -1,3 +1,6 @@
+<div style="float:left;width:200px">
+
+
   <h8>
     <%= link_to "<", date: @date.prev_month %>
     <%= @date.strftime("%B %Y") %>
@@ -8,6 +11,19 @@
   <% end %>
 
 
+<div id="tag_cloud">
+  <% tag_cloud Event.tag_counts, %w[s m l] do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+</div>
+
+</div>
+
+<div style="float:right;width:800px">
+
+<%#= gmaps("markers" => {"data" => @json}, "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => false, "zoom" => 16}) %>
+
+<%= gmaps4rails(@json) %>
 
 
 <%- model_class = Event -%>
@@ -59,3 +75,7 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_event_path,
             :class => 'btn btn-primary' %>
+
+
+
+</div>
