@@ -4,9 +4,26 @@ $( "#event_event_date" ).datepicker({ dateFormat: 'yy-mm-dd', showOn: "button",
 buttonImage: "/calendar.gif",
 buttonImageOnly: true });
 });
+
 </script>
 
-<%= form_for @event, :html => { :class => 'form-horizontal' } do |f| %>
+
+
+
+ <script>
+$(function() {
+$('#event_start_time').timepicker();
+
+});
+
+</script>
+
+
+<%= form_for @event,  :html => { :multipart => true } do |f| %>
+
+Upload photo<br/>
+   <%=f.file_field :photo %>
+
   <div class="control-group">
     <%= f.label :title, :class => 'control-label' %>
     <div class="controls">
@@ -17,9 +34,18 @@ buttonImageOnly: true });
      <label class="control-label">Event Date</label>
     <div class="controls">
       
-      <input class="text_field" id="event_event_date" name="event[event_date]" readonly="true" size="30" type="text" />
+      <input class="text_field" id="event_event_date" name="event[event_date]" readzonly="true" size="30" type="text" />
     </div>
   </div>
+
+   <div class="control-group">
+    <label class="control-label" for="event_start_time">Start time</label>
+    <div class="controls">
+      <input  class='dateselect-time input-small' id="event_start_time" name="event[start_time]" size="30" type="text" />
+  <span class='add-on'><i class='icon-time'></i></span>
+    </div>
+  </div>
+
 
 
   <div class="control-group">
@@ -31,12 +57,7 @@ buttonImageOnly: true });
 
 
 
-  <div class="control-group">
-    <%= f.label :description, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :description, :class => 'text_area' %>
-    </div>
-  </div>
+
 
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>

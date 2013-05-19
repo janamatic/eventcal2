@@ -19,23 +19,30 @@
 
 </div>
 
-<div style="float:right;width:800px">
-
-<%#= gmaps("markers" => {"data" => @json}, "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => false, "zoom" => 16}) %>
-
-<%= gmaps4rails(@json) %>
-
+<div style="float:left;width:500px">
 
 <%- model_class = Event -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
+
+ <div style="float:left;width:100%;">
+<%= form_tag events_path, :method => 'get' do %>
+<br>
+<p>
+    <input id="search" name="search" placeholder="Search Events" type="text" />
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+</div>
+
+
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
+
       <th><%= model_class.human_attribute_name(:address1) %></th>
       <th><%= model_class.human_attribute_name(:address2) %></th>
       <th><%= model_class.human_attribute_name(:city) %></th>
@@ -47,9 +54,9 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= link_to event.id, event_path(event) %></td>
-        <td><%= event.title %></td>
-        <td><%= event.description %></td>
+        <td><% if event.photo? %><a href="/events/<%=event.id%>"><%= image_tag event.photo.url(:thumb) %></a> <%end%> </td>
+        <td><%= link_to event.title, event %></td>
+
         <td><%= event.address1 %></td>
         <td><%= event.address2 %></td>
         <td><%= event.city %></td>
@@ -58,7 +65,6 @@
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
                       event_path(event), :class => 'btn btn-mini' %>
-
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_event_path(event), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -79,3 +85,14 @@
 
 
 </div>
+
+
+<div style="float:right;width:300px">
+
+<%= gmaps("markers" => {"data" => @json}, "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => true}) %>
+
+</div>
+
+
+
+<%= yield :scripts %>

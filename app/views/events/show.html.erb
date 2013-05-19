@@ -23,17 +23,6 @@ Event date: <%=@event.event_date.try(:month)%>/<%=@event.event_date.try(:day)%>/
 <%= gmaps("markers" => {"data" => @json}, "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => false, "zoom" => 16}) %>
 
 
-<% content_for :scripts do %>
-  <script type="text/javascript" charset="utf-8">
-    Gmaps.map.callback = function() {
-      if (Gmaps.map.markers.length == 1) {
-        var marker = Gmaps.map.markers[0];
-        var infowindow = marker.infowindow;
-        infowindow.open(Gmaps.map.map, marker.serviceObject);
-      }
-    }
-  </script>
-<% end %>
 
 <%= yield :scripts %>
 

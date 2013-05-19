@@ -1,12 +1,10 @@
 @import "twitter/bootstrap/bootstrap";
-@import "twitter/bootstrap/responsive";
 
-@media (min-width: 1000px) {
-    body {
+   body {
         padding-top: 60px;
-        min-width: 1000px;
-    }
+        min-width: 1160px;
 }
+
 #tag_cloud {
   width: 50px;
   line-height: 1.6em;

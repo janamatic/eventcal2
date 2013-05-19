@@ -22,7 +22,11 @@ class EventsController < ApplicationController
     end
    else  
 
+
+
     @events = Event.tagged_with(params[:tag])
+
+
 
 end
 
@@ -44,15 +48,22 @@ end
     end
    else  
 
+   <%if params[:search]%>
+
+     @events=Event.tagged_with(params[:search])+Event.where("title LIKE ?", '%' + params[:search] + '%') + Event.where("description LIKE ?", '%' + params[:search] + '%')
+     @events=@events.uniq
+    <%else%>
+
     @events = Event.all
 
+   <%end%>
+
+
+end
 end
 
 
 
-
-
-  end
     @json = @events.to_gmaps4rails
 
    
