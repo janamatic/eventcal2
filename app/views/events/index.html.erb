@@ -89,8 +89,14 @@
 
 <div style="float:right;width:300px">
 
-<%= gmaps("markers" => {"data" => @json}, "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => true}) %>
+<% if @events.size ==  0 %>
 
+<%elsif @events.size==1 %>
+<%= gmaps("markers" => {"data" => @json}, "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => false, "zoom" => 16}) %>
+<%else%>
+
+<%= gmaps("markers" => {"data" => @json}, "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => true}) %>
+<%end%>
 </div>
 
 
