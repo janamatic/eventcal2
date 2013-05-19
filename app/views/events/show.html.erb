@@ -3,6 +3,9 @@
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
 
+<div>
+<% if @event.photo? %><%= image_tag @event.photo.url(:medium) %> <%end%>
+</div>
 <table>
 <tr>
 
