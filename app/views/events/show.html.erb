@@ -4,7 +4,7 @@
 </div>
 
 <div>
-<%= image_tag @event.photo.url(:medium) %> 
+<% if @event.photo? %><%= image_tag @event.photo.url(:medium) %> <%end%>
 </div>
 <table>
 <tr>
