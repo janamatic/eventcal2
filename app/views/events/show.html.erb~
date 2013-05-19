@@ -2,23 +2,36 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
-Event date: <%=@event.event_date.try(:month)%>/<%=@event.event_date.try(:day)%>/<%=@event.event_date.try(:year)%>
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-  <dd><%= @event.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @event.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:address1) %>:</strong></dt>
-  <dd><%= @event.address1 %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:address2) %>:</strong></dt>
-  <dd><%= @event.address2 %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:city) %>:</strong></dt>
-  <dd><%= @event.city %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:state) %>:</strong></dt>
-  <dd><%= @event.state %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:zip) %>:</strong></dt>
-  <dd><%= @event.zip %></dd>
-</dl>
+
+<table>
+<tr>
+
+<td>When?:</td> <td><%=@event.event_date.try(:month)%>/<%=@event.event_date.try(:day)%>/<%=@event.event_date.try(:year)%> Time: <%=@event.start_time %> </td>
+
+</tr>
+
+<tr>
+<td>
+Where?:</td> <td> <%=@event.address1 %> <%=@event.address1 %> <br/>
+               <%=@event.city %>, <%=@event.state %> <%=@event.zip %>
+
+ </td>
+
+</tr>
+
+<tr>
+
+<td>
+</td>
+
+<td>
+<%=@event.tite %><br/>
+<%=@event.description %>
+</td>
+
+</tr>
+
+</table>
 
 <%= gmaps("markers" => {"data" => @json}, "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => false, "zoom" => 16}) %>
 
