@@ -48,15 +48,18 @@ end
     end
    else  
 
-   <%if params[:search]%>
+   if params[:search]
 
      @events=Event.tagged_with(params[:search])+Event.where("title LIKE ?", '%' + params[:search] + '%') + Event.where("description LIKE ?", '%' + params[:search] + '%')
      @events=@events.uniq
-    <%else%>
+    elsif params[:tags]
+
+        @events=Event.tagged_with(params[:tags])
+    else
 
     @events = Event.all
 
-   <%end%>
+   end
 
 
 end

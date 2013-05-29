@@ -1,3 +1,4 @@
+<div style="float:left;width:700px">
 <%- model_class = Event -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
@@ -36,11 +37,12 @@ Where?:</td> <td> <%=@event.address1 %> <%=@event.address1 %> <br/>
 
 </table>
 
-<%= gmaps("markers" => {"data" => @json}, "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => false, "zoom" => 16}) %>
 
 
 
-<%= yield :scripts %>
+
+
+
 
 
 
@@ -55,3 +57,21 @@ Where?:</td> <td> <%=@event.address1 %> <%=@event.address1 %> <br/>
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
 </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div style="float:right;width:300px;margin-top:100px">
+<%= gmaps("markers" => {"data" => @json}, "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => false, "zoom" => 16}) %>
+</div>
+<%= yield :scripts %>

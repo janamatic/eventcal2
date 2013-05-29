@@ -16,13 +16,26 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="/">EventsCalendar</a>
+        <a class="brand" style="font-size:40px;margin-top:10px" href="/">EventsCalendar</a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li><%= link_to "About Us" %></li>
-            <li><%= link_to "Contact" %></li>
-            <li><%= link_to "Contact Us" %></li>
-          </ul>
+          
+           </ul>
+
+
+                     <a style="margin-top:20px;margin-left:200px" href="/events/new" class="btn btn-success">Add new event</a>
+
+ <div style="float:right;width:300px;">
+<%= form_tag events_path, :method => 'get' do %>
+<br>
+<p>
+    <input id="search" name="search" placeholder="Search Events" type="text" />
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+
+</div>
         </div>
       </div>
     </div>
@@ -32,7 +45,7 @@
 
  <div class="container">
     <div class="row">
-      <div class="span12"><%= yield %></div>
+      <div style="width:1160px;overflow:hidden;margin-top:60px;"><%= yield %></div>
     </div>
   </div>
 
