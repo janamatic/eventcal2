@@ -8,7 +8,18 @@ class EventsController < ApplicationController
     @events = []
     @all_events= Event.all
 
+     if !params[:day] 
+         params[:day]=Date.today.day
+     end
 
+     if !params[:month] 
+         params[:month]=Date.today.month
+     end
+
+
+     if !params[:year] 
+         params[:year]=Date.today.year
+     end
   if params[:tag]
 
     @all_tag_events = Event.tagged_with(params[:tag])

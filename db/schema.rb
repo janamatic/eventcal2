@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130518232853) do
+ActiveRecord::Schema.define(:version => 20130602164109) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
@@ -32,6 +32,10 @@ ActiveRecord::Schema.define(:version => 20130518232853) do
     t.datetime "photo_updated_at"
     t.date     "event_date"
     t.string   "start_time"
+    t.date     "end_date"
+    t.string   "end_time"
+    t.string   "recurring"
+    t.string   "admission"
   end
 
   create_table "taggings", :force => true do |t|

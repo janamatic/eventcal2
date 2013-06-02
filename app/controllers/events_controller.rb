@@ -9,6 +9,8 @@ class EventsController < ApplicationController
     @all_events= Event.all
 
 
+
+
   if params[:tag]
 
     @all_tag_events = Event.tagged_with(params[:tag])

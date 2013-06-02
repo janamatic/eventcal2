@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :photo, :tag_list, :address1, :address2, :start_time, :city, :description, :event_date, :latitude, :longitude, :state, :title, :zip, :gmaps
+  attr_accessible :photo, :tag_list, :address1, :address2, :start_time, :city, :description, :admission, :end_date, :end_time, :recurring, :event_date, :latitude, :longitude, :state, :title, :zip, :gmaps
   has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "50x50>" }, :default_url => "/images/:style/missing.png"
   acts_as_gmappable
 

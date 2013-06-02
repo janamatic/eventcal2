@@ -1,7 +1,7 @@
 <div style="float:left;width:700px">
 <%- model_class = Event -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+  <h1><%=@event.title %></h1>
 </div>
 
 <div>
@@ -10,28 +10,49 @@
 <table>
 <tr>
 
-<td>When?:</td> <td><%=@event.event_date.try(:month)%>/<%=@event.event_date.try(:day)%>/<%=@event.event_date.try(:year)%> Time: <%=@event.start_time %> </td>
+
+
+<td>
+<%=@event.description.gsub(/\u000d|\u0009|\u000c|\u0085|\u2028|\u2029|\n/,"<br/>").html_safe %>
+</td>
+
+
+
+<td><b>When?:</b></td> <td>Start: <%=@event.event_date.try(:month)%>/<%=@event.event_date.try(:day)%>/<%=@event.event_date.try(:year)%> Time: <%=@event.start_time %> 
+<br/>
+
+End: <%=@event.end_date.try(:month)%>/<%=@event.end_date.try(:day)%>/<%=@event.end_date.try(:year)%> Time: <%=@event.end_time %> 
+</td>
 
 </tr>
 
 <tr>
-<td>
-Where?:</td> <td> <%=@event.address1 %> <%=@event.address1 %> <br/>
-               <%=@event.city %>, <%=@event.state %> <%=@event.zip %>
+<td><b>Where?:</b></td> 
+
+<td> <%=@event.address1 %> <%=@event.address1 %> <br/>
+<%=@event.city %>, <%=@event.state %> <%=@event.zip %>
 
  </td>
 
+
 </tr>
 
 <tr>
 
-<td>
-</td>
+
 
 <td>
-<%=@event.title %><br/>
-<%=@event.description %>
+<b>Admission</b>
 </td>
+
+
+
+<td>
+<%=@event.admission %>
+</td>
+
+
+
 
 </tr>
 
@@ -71,7 +92,7 @@ Where?:</td> <td> <%=@event.address1 %> <%=@event.address1 %> <br/>
 
 
 
-<div style="float:right;width:300px">
+<div style="float:right;width:300px;margin-top:100px">
 <%= gmaps("markers" => {"data" => @json}, "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => false, "zoom" => 16}) %>
 </div>
 <%= yield :scripts %>
