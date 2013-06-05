@@ -6,13 +6,34 @@
   -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
   -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
   box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
-  width: 300px;
+  width: 450px;
 }
 
-.gmaps4rails_map {
-  width: 300px;
-  height: 300px;
+
+.map_container2 {
+  padding: 6px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ccc #ccc #999 #ccc;
+  -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+  -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+  box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
+  width: 250px;
 }
+
+
+.gmaps4rails_map {
+  width: 450px;
+  height: 450px;
+}
+
+
+
+.gmaps4rails_map2 {
+  width: 250px;
+  height: 250px;
+}
+
 
 .bing_map {
    position: absolute;

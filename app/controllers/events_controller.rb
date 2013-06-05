@@ -8,9 +8,6 @@ class EventsController < ApplicationController
     @events = []
     @all_events= Event.all
 
-
-
-
   if params[:tag]
 
     @all_tag_events = Event.tagged_with(params[:tag])
@@ -59,7 +56,12 @@ end
         @events=Event.tagged_with(params[:tags])
     else
 
-    @events = Event.all
+      for e in @all_events do
+        if e.event_date.try(:day).try(:to_s)==Date.today.day and e.event_date.try(:month).try(:to_s)==Date.today.month and e.event_date.try(:year).try(:to_s)==Date.today.year 
+          @events << e
+        end
+    end
+
 
    end
 

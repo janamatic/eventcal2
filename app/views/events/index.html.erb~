@@ -1,3 +1,4 @@
+
 <div style="float:left;width:200px">
 
 <div style="overflow:hidden;background:#f0f0f0;padding:5px 7px 5px 3px">
@@ -6,13 +7,57 @@
     <%= @date.strftime("%B %Y") %>
     <%= link_to ">", date: @date.next_month %>
   </div>
+
   <%= calendar @date do |date| %>
-   <div style="background:#fff"> <%= link_to date.day, :month=>date.month, :day=>date.day, :year=>date.year %></div>
+
+<%if date.day==params[:day].try(:to_i) &&  date.year==params[:year].try(:to_i) &&  date.month==params[:month].try(:to_i)%> 
+   <div style="background:#f0f0f0;color:white"> <%= link_to date.day, :month=>date.month, :day=>date.day, :year=>date.year %>
+</div>
+
+
+
+<% elsif params[:day]==nil and params[:year]==nil and params[:month]==nil and date.day==Date.today.day.to_i and date.year==Date.today.year.to_i and date.month==Date.today.month.to_i %>
+
+   <div style="background:#f0f0f0;color:white"> <%= link_to date.day, :month=>date.month, :day=>date.day, :year=>date.year %>
+
+<% else %>
+
+<% if params[:weekend]=='1' and date.day==Date.today.sunday.day  and date.year==Date.today.sunday.year  and date.month==Date.today.sunday.month  %>
+
+  <div style="background:#f0f0f0"> <%= link_to date.day, :month=>date.month, :day=>date.day, :year=>date.year %>
+
+
+
+<% elsif params[:week]=='1' and date.day>=Date.today.sunday.day  and date.year>=Date.today.sunday.year  and date.month>=Date.today.sunday.month  and date.day<=(Date.today.sunday+6.days).day  and date.year<=(Date.today.sunday+6.days).year  and date.month<=(Date.today.sunday+6.days).month  %>
+
+  <div style="background:#f0f0f0"> <%= link_to date.day, :month=>date.month, :day=>date.day, :year=>date.year %>
+
+
+<%else%>
+
+ <div style="background:#fff"> <%= link_to date.day, :month=>date.month, :day=>date.day, :year=>date.year %>
+
+<%end%>
+
+
+
+</div>
+
+<%end%>
+
+
   <% end %>
 </div>
 
 <div id="tag_cloud" style="margin-top:30px">
 
+<%=link_to 'Tomorrow', :day=>Date.tomorrow.day, :month=>Date.tomorrow.month, :year=>Date.tomorrow.year %>
+<br/>
+<%=link_to 'This Weekend', :day=>(Date.today.sunday-1.days).day, :month=>(Date.today.sunday-1.days).month, :year=>(Date.today.sunday-1.days).year, :weekend=>1 %>
+
+<%=link_to 'Next Week', :day=>(Date.today.sunday).day, :month=>(Date.today.sunday).month, :year=>(Date.today.sunday).year, :week=>1 %>
+<br/>
+<br/>
   <form class="filter_form", method="get">
   <% tag_cloud Event.tag_counts, %w[m m m] do |tag, css_class| %>
 <div>   
@@ -33,11 +78,17 @@
 
 </div>
 
-<div style="float:left;width:500px;margin-left:80px;margin-top:-24px">
+<div style="float:left;width:300px;margin-left:80px;margin-top:-24px">
 
 <%- model_class = Event -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <h1>
+
+<%if params[:day]==nil and params[:month]==nil and params[:year]==nil %>
+
+<% end %>
+
+</h1>
 </div>
 
 
@@ -48,11 +99,11 @@
 
     <% @events.each do |event| %>
 
-<div style="width:500px;border-bottom:1px solid black;overflow:hidden">    
+<div style="width:300px;border-bottom:1px solid black;overflow:hidden">    
     
 <div style="float:left;width:50px"> <% if event.photo? %><a href="/events/<%=event.id%>"><%= image_tag event.photo.url(:thumb) %></a> <%end%></div>
 
-<div style="float:right;width:440px">
+<div style="float:right;width:240px">
         <%= link_to event.title, event %><br/>
 
       <%=event.event_date.try(:month)%>/<%=event.event_date.try(:day)%>/<%=event.event_date.try(:year)%> <%=event.start_time %><br/>
@@ -74,12 +125,12 @@
 </div>
 
 
-<div style="float:right;width:300px">
+<div style="float:right;width:500px">
 
 <% if @events.size ==  0 %>
 
 <%elsif @events.size==1 %>
-<%= gmaps("markers" => {"data" => @json}, "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => false, "zoom" => 16}) %>
+<%= gmaps("markers" => {"data" => @json}, "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => false, "zoom" => 13}) %>
 <%else%>
 
 <%= gmaps("markers" => {"data" => @json}, "map_options" => {"processing" => "json", "auto_adjust" => true, "auto_zoom" => true}) %>
