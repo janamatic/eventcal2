@@ -82,7 +82,35 @@
 
 <%- model_class = Event -%>
 <div class="page-header">
-  <h1>
+  <h1> 
+
+
+
+<%if params[:day] && params[:year] && params[:month] && params[:week] %> 
+  
+<%=(Date.today.sunday).month%>/<%=(Date.today.sunday).day%>/<%=(Date.today.sunday).year%> - 
+<%=(Date.today.sunday+6.days).month%>/<%=(Date.today.sunday+6.days).day%>/<%=(Date.today.sunday+6.days).year%>
+
+<%elsif params[:day] && params[:year] && params[:month] && params[:weekend] %> 
+
+<%=(Date.today.sunday-1.days).month%>/<%=(Date.today.sunday-1.days).day%>/<%=(Date.today.sunday-1.days).year%> - 
+<%=(Date.today.sunday).month%>/<%=(Date.today.sunday).day%>/<%=(Date.today.sunday).year%>
+<%elsif params[:day] && params[:year] && params[:month] %> 
+   <%= params[:month]%>/<%= params[:day]%>/<%= params[:year]%>
+
+
+<%else %> 
+<%=Date.today.month%>/<%=Date.today.day%>/<%=Date.today.year%>
+
+<%end%>
+
+
+
+
+
+
+
+</h1>
 
 <%if params[:day]==nil and params[:month]==nil and params[:year]==nil %>
 
