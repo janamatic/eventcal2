@@ -1,4 +1,6 @@
 Eventcalendar::Application.routes.draw do
+  get "profile/index"
+
   devise_for :users
 
   resources :events
