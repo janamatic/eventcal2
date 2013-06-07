@@ -49,7 +49,14 @@
 </div>
 
 <div id="tag_cloud" style="margin-top:30px">
-<%= link_to_unless_current 'Today', events#index %>
+
+<%if !params[:tags] and !params[:week] and !params[:day] and !params[:year] and !params[:month] and !params[:weekend]%>
+Today
+<%else%>
+
+<a href='/'>Today</a>
+<%end%>
+
 <% if !params[:tomorrow] %>
 <%=link_to 'Tomorrow', :day=>Date.tomorrow.day, :month=>Date.tomorrow.month, :year=>Date.tomorrow.year,:tommorrow=>1 %>
 <%else%>
