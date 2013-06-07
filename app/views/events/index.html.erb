@@ -100,7 +100,16 @@
 
 
 <%else %> 
+
+<% if !params[:tags] %>
 <%=Date.today.month%>/<%=Date.today.day%>/<%=Date.today.year%>
+<%else%>
+<%for tag in params[:tags]%> 
+<%=tag%> 
+<%end%>
+
+<%end%>
+
 
 <%end%>
 
