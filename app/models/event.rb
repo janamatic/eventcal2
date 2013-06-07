@@ -14,7 +14,7 @@ acts_as_taggable
 
 def gmaps4rails_infowindow
   # add here whatever html content you desire, it will be displayed when users clicks on the marker
-  "<div style='font-size:10px'><a href='/events/#{self.id}'>#{self.title}</a><br/> #{self.event_date.try(:month)}/#{self.event_date.try(:day)}/#{self.event_date.try(:year)} #{self.start_time} <br/> #{self.address1}</div>"
+  "<div style='font-size:10px'><a target='_blank' href='/events/#{self.id}'>#{self.title}</a><br/> #{self.event_date.try(:month)}/#{self.event_date.try(:day)}/#{self.event_date.try(:year)} #{self.start_time} <br/> #{self.address1}</div>"
 end
 
 end
