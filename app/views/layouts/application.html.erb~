@@ -4,6 +4,8 @@
   <title>Eventcalendar</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <script type="text/javascript" src="http://jonthornton.github.io/jquery-timepicker/jquery.timepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jonthornton.github.io/jquery-timepicker/jquery.timepicker.css" />
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -23,7 +25,7 @@
            </ul>
 
 
-                     <a style="margin-top:20px;margin-left:200px" href="/events/new" class="btn btn-success">Add new event</a>
+                     <a style="margin-top:18px;margin-left:200px" href="/events/new" class="btn btn-success">Add new event</a>
 
  <div style="float:right;width:300px;">
 <%= form_tag events_path, :method => 'get' do %>

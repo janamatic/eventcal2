@@ -99,6 +99,15 @@ Upload photo<br/>
 
 
 
+  <div class="control-group">
+    <label>Admission</label>
+    <div class="controls">
+      <%= f.text_field :admission,:class => 'text_area' %>
+    </div>
+  </div>
+
+
+
 
 
 

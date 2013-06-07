@@ -27,7 +27,7 @@ gem "twitter-bootstrap-rails"
 
 
 end
-gem 'bootstrap-timepicker-rails'
+
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
