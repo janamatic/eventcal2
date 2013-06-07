@@ -49,12 +49,27 @@
 </div>
 
 <div id="tag_cloud" style="margin-top:30px">
-
-<%=link_to 'Tomorrow', :day=>Date.tomorrow.day, :month=>Date.tomorrow.month, :year=>Date.tomorrow.year %>
+<%= link_to_unless_current 'Today', events#index %>
+<% if !params[:tomorrow] %>
+<%=link_to 'Tomorrow', :day=>Date.tomorrow.day, :month=>Date.tomorrow.month, :year=>Date.tomorrow.year,:tommorrow=>1 %>
+<%else%>
+Tomorrow
+<%end%>
 <br/>
-<%=link_to 'This Weekend', :day=>(Date.today.sunday-1.days).day, :month=>(Date.today.sunday-1.days).month, :year=>(Date.today.sunday-1.days).year, :weekend=>1 %>
 
+<%if !params[:weekend] %>
+<%=link_to 'This Weekend', :day=>(Date.today.sunday-1.days).day, :month=>(Date.today.sunday-1.days).month, :year=>(Date.today.sunday-1.days).year, :weekend=>1 %>
+<%else%>
+This Weekend
+<%end%>
+<%if !params[:week]%>
 <%=link_to 'Next Week', :day=>(Date.today.sunday).day, :month=>(Date.today.sunday).month, :year=>(Date.today.sunday).year, :week=>1 %>
+
+<%else%>
+
+Next Week
+
+<%end%>
 <br/>
 <br/>
   <form class="filter_form", method="get">
