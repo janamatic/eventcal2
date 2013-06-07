@@ -80,6 +80,9 @@ Next Week
 <br/>
 <br/>
   <form class="filter_form", method="get">
+  <input name='day' value='<%=params[:day]%>' type='hidden'/>
+    <input name='year' value='<%=params[:year]%>' type='hidden'/>
+      <input name='month' value='<%=params[:month]%>' type='hidden'/>
   <% tag_cloud Event.tag_counts, %w[m m m] do |tag, css_class| %>
 <div>   
  <%#= link_to tag.name, tag_path(tag.name), class: css_class %>
